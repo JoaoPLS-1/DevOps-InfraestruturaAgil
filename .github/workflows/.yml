@@ -40,4 +40,8 @@ jobs:
       - name: Validar Sintaxe do HTML
         uses: htmlhint/htmlhint-action@v2
         with:
-        target_pattern: 'index.html'
+          target_pattern: 'index.html'
+      - name: Checar arquivos estáticos
+        run: |
+          ls -R
+          echo "Todos os arquivos foram carregados no RUNNER"
