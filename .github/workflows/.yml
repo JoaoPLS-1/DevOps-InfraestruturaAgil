@@ -22,6 +22,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Explorando o Runner
+        run: lsb_release -a && free -h
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validar Sintaxe do HTML
+        run: npx --yes htmlhint index.html
+
+      - name: Checar arquivos estáticos
+        run: |
+          ls -R
+          echo "Todos os arquivos foram carregados no RUNNER"
+           
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -33,15 +49,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Explorando o Runner
-        run: lsb_release -a && free -h
-
-      - name: Validar Sintaxe do HTML
-        uses: htmlhint/htmlhint-action@v2
-        with:
-          target_pattern: 'index.html'
-      - name: Checar arquivos estáticos
-        run: |
-          ls -R
-          echo "Todos os arquivos foram carregados no RUNNER"
