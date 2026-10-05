@@ -36,3 +36,8 @@ jobs:
 
       - name: Explorando o Runner
         run: lsb_release -a && free -h
+
+      - name: Validar Sintaxe do HTML
+        uses: htmlhint/htmlhint-action@v2
+        with:
+        target_pattern: 'index.html'
